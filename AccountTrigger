@@ -1,1 +1,14 @@
-
+trigger AccountAddressTrigger on Account (before insert,After insert,before update,before Delete,After Update) {
+//Task on country Code
+    if(Trigger.isInsert && Trigger.isBefore){
+        List<Account> accountList=new List<Account>();
+        for(Account actObj:Trigger.new){
+            if(actObj.phone!=null && actObj.country__c!=null){
+                accountList.add(actObj);
+            }
+            if(accountList!=null){
+                AccountTriggerHandler.countryCode(accountList);
+              }
+         	}
+     }   
+}
