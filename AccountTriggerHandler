@@ -1,1 +1,9 @@
-
+public class AccountTriggerHandler {
+public static void countryCode(List<Account> accountList){
+       for(Account accObj:accountList){
+            if(accObj.phone.indexOf(Country_Code__mdt.getInstance(accObj.Country__c).code__c)!=0){
+           accObj.Phone=String.valueOf(Country_Code__mdt.getInstance(accObj.Country__c).code__c)+String.valueOf(accObj.phone);
+          }
+        }
+       }
+}
